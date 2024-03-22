@@ -14,6 +14,14 @@ class ArgumentParser:
 
     def parse_arguments(self):
         args = self.parser.parse_args()
-        if args.model_type == 'OpenAIModel' and not args.openai_model and not args.openai_api_key:
-            self.parser.error("--openai_model and --openai_api_key is required when using OpenAIModel")
+        # if args.model_type == 'OpenAIModel' and not args.openai_model and not args.openai_api_key:
+        #     self.parser.error("--openai_model and --openai_api_key is required when using OpenAIModel")
+        if args.model_type == 'OpenAIModel':
+            if not args.openai_model:
+                print("If you haven't configure model in your configuration file, "
+                      "then --openai_model is required on your command line.")
+            if not args.openai_api_key:
+                print("If you haven't configure api_key in your configuration file, "
+                      "and haven't set the OPENAI_API_KEY environment variable, "
+                      "then --openai_api_key is required on your command line.")
         return args
