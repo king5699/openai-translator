@@ -98,6 +98,13 @@ export GLM_MODEL_URL="http://xxx:xx"
 python main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book your_book.pdf 
 ```
 
+```bash
+# gradio webui界面
+export OPENAI_API_KEY="sk-xxx"
+export PYTHONUTF8=1
+python app.py 
+```
+
 ## 许可证
 
 该项目采用 GPL-3.0 许可证。有关详细信息，请查看 [LICENSE](LICENSE) 文件。
