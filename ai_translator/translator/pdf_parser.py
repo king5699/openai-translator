@@ -13,8 +13,8 @@ class PDFParser:
         book = Book(pdf_file_path)
 
         with pdfplumber.open(pdf_file_path) as pdf:
-            if pages is not None and pages > len(pdf.pages):
-                raise PageOutOfRangeException(len(pdf.pages), pages)
+            # if pages is not None and pages > len(pdf.pages):
+            #     raise PageOutOfRangeException(len(pdf.pages), pages)
 
             if pages is None:
                 pages_to_parse = pdf.pages
@@ -25,7 +25,7 @@ class PDFParser:
                 page = Page()
 
                 # Store the original text content
-                raw_text = pdf_page.extract_text()
+                raw_text = pdf_page.extract_text(layout=True)
                 tables = pdf_page.extract_tables()
 
                 # Remove each cell's content from the original text
