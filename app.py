@@ -14,23 +14,24 @@ headers = {
 block_break = '\n========== [END] ==========\n\n'
 
 
-with gr.Blocks() as demo:
+with gr.Blocks(css='static/app.css') as demo:
     gr.Markdown("""
     ## PDF文档在线智能翻译器
     """)
     with gr.Row():
         with gr.Column():
-            source_file = gr.File(label='PDF文件', file_types=['pdf'], interactive=True)
-            source_textbox = gr.Textbox(label='提示词')
+            source_file = gr.File(elem_id='id_source_file', label='PDF文件', file_types=['pdf'], interactive=True)
+            source_textbox = gr.Textbox(elem_id='id_source_textbox', label='提示词', lines=20)
 
         with gr.Column():
             with gr.Row():
                 with gr.Column():
-                    language_dropdown = gr.Dropdown(choices=["中文", "日语", ], value='中文', label="目标语言", info="")
+                    language_dropdown = gr.Dropdown(elem_id='id_language_dropdown', choices=["中文", "日语", ],
+                                                    value='中文', label="目标语言", info="")
                 with gr.Column():
                     submit_btn = gr.Button("翻译", variant='primary')
 
-            target_textbox = gr.Textbox(label='译文')
+            target_textbox = gr.Textbox(elem_id='id_target_textbox', label='译文', lines=20)
 
     @gr.on(triggers=[language_dropdown.change, source_file.upload],
            inputs=[language_dropdown, source_file],
