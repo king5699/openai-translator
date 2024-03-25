@@ -98,6 +98,8 @@ export GLM_MODEL_URL="http://xxx:xx"
 python main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book your_book.pdf 
 ```
 
+有一个基于 gradio 实现的web界面
+
 ```bash
 # gradio webui界面
 export OPENAI_API_KEY="sk-xxx"

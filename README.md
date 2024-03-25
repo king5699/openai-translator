@@ -99,6 +99,8 @@ export GLM_MODEL_URL="http://xxx:xx"
 python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book your_book.pdf 
 ```
 
+There's a gradio based webui
+
 ```bash
 # gradio based webui
 export OPENAI_API_KEY="sk-xxx"
