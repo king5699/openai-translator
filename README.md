@@ -105,6 +105,7 @@ export OPENAI_API_KEY="sk-xxx"
 export PYTHONUTF8=1
 python app.py 
 ```
+![webui](images/webui.png)
 
 ## License
 
