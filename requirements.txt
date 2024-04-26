@@ -6,5 +6,12 @@ pillow
 reportlab
 pandas
 loguru
-openai
-gradio
+openai==1.20.0
+langchain==0.1.13
+langchain-openai==0.1.1
+langchain-experimental==0.0.55
+gradio==4.22.0
+httpx
+httpx-sse
+PyJWT
+zhipuai

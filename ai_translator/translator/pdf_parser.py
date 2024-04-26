@@ -1,7 +1,7 @@
 import pdfplumber
 from typing import Optional
-from book import Book, Page, Content, ContentType, TableContent
-from translator.exceptions import PageOutOfRangeException
+from ai_translator.book import Book, Page, Content, ContentType, TableContent
+from ai_translator.translator import PageOutOfRangeException
 from utils import LOG
 
 
