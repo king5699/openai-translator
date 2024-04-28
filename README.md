@@ -99,15 +99,25 @@ export GLM_MODEL_URL="http://xxx:xx"
 python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book your_book.pdf 
 ```
 
-There's a gradio based webui
+There's two gradio based webui apps
 
 ```bash
-# gradio based webui
 export OPENAI_API_KEY="sk-xxx"
+export ZHIPUAI_API_KEY="xxx"
 export PYTHONUTF8=1
+```
+
+```bash
+# app1
 python app.py 
 ```
-![webui](images/webui.png)
+![webui1](images/webui1.png)
+
+```bash
+# app2
+python gradio_server.py 
+```
+![webui2](images/webui2.png)
 
 ## License
 
