@@ -2,7 +2,7 @@ import pdfplumber
 from typing import Optional
 from ai_translator.book import Book, Page, Content, ContentType, TableContent
 from ai_translator.translator import PageOutOfRangeException
-from utils import LOG
+from ai_translator.utils import LOG
 
 
 class PDFParser:
@@ -44,8 +44,6 @@ class PDFParser:
                     text_content = Content(content_type=ContentType.TEXT, original=cleaned_raw_text)
                     page.add_content(text_content)
                     LOG.debug(f"[raw_text]\n {cleaned_raw_text}")
-
-
 
                 # Handling tables
                 if tables:

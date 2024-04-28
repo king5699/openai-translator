@@ -10,14 +10,13 @@ from utils import LOG
 
 
 class TranslationChain:
+    SYSTEM_PROMPT = """You are a translation expert, proficient in various languages. \n
+    Translates {source_language} to {target_language}."""
+
     def __init__(self, llm, verbose: bool = True):
 
         # 翻译任务指令始终由 System 角色承担
-        template = (
-            """You are a translation expert, proficient in various languages. \n
-            Translates {source_language} to {target_language}."""
-        )
-        system_message_prompt = SystemMessagePromptTemplate.from_template(template)
+        system_message_prompt = SystemMessagePromptTemplate.from_template(self.SYSTEM_PROMPT)
 
         # 待翻译文本由 Human 角色输入
         human_template = "{text}"
@@ -33,7 +32,7 @@ class TranslationChain:
     def run(self, text: str, source_language: str, target_language: str) -> (str, bool):
         result = ""
         try:
-            result = self.chain.run({
+            result = self.chain.invoke({
                 "text": text,
                 "source_language": source_language,
                 "target_language": target_language,
@@ -43,3 +42,9 @@ class TranslationChain:
             return result, False
 
         return result, True
+
+
+class TableTranslationChain(TranslationChain):
+    SYSTEM_PROMPT = """You are a translation expert, proficient in various languages. \n
+    Translates the contents of all arrays below from {source_language} to {target_language}, 
+    maintain spacing (spaces, separators), and return in table form"""

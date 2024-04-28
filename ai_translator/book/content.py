@@ -3,10 +3,12 @@ from enum import Enum, auto
 from PIL import Image as PILImage
 from utils import LOG
 
+
 class ContentType(Enum):
     TEXT = auto()
     TABLE = auto()
     IMAGE = auto()
+
 
 class Content:
     def __init__(self, content_type, original, translation=None):
@@ -14,6 +16,9 @@ class Content:
         self.original = original
         self.translation = translation
         self.status = False
+
+    def __str__(self):
+        return str(self.original)
 
     def set_translation(self, translation, status):
         if not self.check_translation_type(translation):
@@ -67,7 +72,7 @@ class TableContent(Content):
         target_df = self.translation if translated else self.original
         for row_idx, row in target_df.iterrows():
             for col_idx, item in enumerate(row):
-                yield (row_idx, col_idx, item)
+                yield row_idx, col_idx, item
 
     def update_item(self, row_idx, col_idx, new_value, translated=False):
         target_df = self.translation if translated else self.original

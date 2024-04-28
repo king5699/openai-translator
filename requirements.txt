@@ -14,4 +14,3 @@ gradio==4.22.0
 httpx
 httpx-sse
 PyJWT
-zhipuai
