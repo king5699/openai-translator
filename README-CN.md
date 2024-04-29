@@ -114,9 +114,9 @@ python app.py
 
 ```bash
 # app2
-python gradio_server.py 
+python gradio_server.py --model_type GLMModel
 ```
-![webui2](images/webui2.png)
+![webui2-2](images/webui2-2.png)
 
 ## 许可证
 
