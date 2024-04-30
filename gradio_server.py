@@ -2,6 +2,7 @@ import time
 import os
 import gradio as gr
 import jwt
+from langchain_community.chat_models import ChatZhipuAI
 from langchain_openai import ChatOpenAI
 from ai_translator.utils import ArgumentParser, LOG
 from ai_translator.translator import PDFTranslator2, TranslationConfig, FileFormat
@@ -27,20 +28,27 @@ def generate_token(apikey: str, exp_seconds: int):
     )
 
 
-glm_model = ChatOpenAI(
+# 备用：使用ChatOpenAI类调用glm的候补方式 alternative
+alt_glm_model = ChatOpenAI(
     model_name='glm-4',
     temperature=0.5,  # (0.0, 1.0) 不能等于0
     verbose=True,
     openai_api_key=generate_token(os.environ['ZHIPUAI_API_KEY'], 3600),
     openai_api_base='https://open.bigmodel.cn/api/paas/v4'
 )
-glm_translator = PDFTranslator2(glm_model)
+glm_model = ChatZhipuAI(
+    model_name='glm-4',
+    temperature=0.5,  # (0.0, 1.0) 不能等于0
+    verbose=True,
+)
 gpt_model = ChatOpenAI(
     model_name='gpt-3.5-turbo',
     temperature=0.5,
     verbose=True,
     max_tokens=4096
 )
+
+glm_translator = PDFTranslator2(glm_model)
 gpt_translator = PDFTranslator2(gpt_model)
 
 
