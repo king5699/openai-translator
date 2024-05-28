@@ -163,3 +163,5 @@ test/*_translated*
 logs/*
 code_prompt.txt
 flagged/
+
+.vscode/
